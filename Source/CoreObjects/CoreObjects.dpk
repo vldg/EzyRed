@@ -1,0 +1,45 @@
+package CoreObjects;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  dbrtl,
+  aurelius;
+
+contains
+  Core.ConsomationType in 'Core.ConsomationType.pas',
+  Core.ConsomationValue in 'Core.ConsomationValue.pas',
+  Core.Country in 'Core.Country.pas',
+  Core.Customer in 'Core.Customer.pas',
+  Core.Residence in 'Core.Residence.pas',
+  Core.ResidenceAddress in 'Core.ResidenceAddress.pas',
+  Core.ResidenceLot in 'Core.ResidenceLot.pas',
+  Core.Title in 'Core.Title.pas';
+
+end.

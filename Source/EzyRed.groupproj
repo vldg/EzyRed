@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D8239103-8705-461A-B29E-805FA8216F95}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Residence.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CoreObjects\CoreObjects.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Residence">
+        <MSBuild Projects="Residence.dproj"/>
+    </Target>
+    <Target Name="Residence:Clean">
+        <MSBuild Projects="Residence.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Residence:Make">
+        <MSBuild Projects="Residence.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CoreObjects">
+        <MSBuild Projects="CoreObjects\CoreObjects.dproj"/>
+    </Target>
+    <Target Name="CoreObjects:Clean">
+        <MSBuild Projects="CoreObjects\CoreObjects.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CoreObjects:Make">
+        <MSBuild Projects="CoreObjects\CoreObjects.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Residence;CoreObjects"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Residence:Clean;CoreObjects:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Residence:Make;CoreObjects:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
