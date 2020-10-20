@@ -63,7 +63,6 @@ begin
   try
     qry.Connection := dmdMain.dbMain;
     qry.SQL.Text := cv.GetSQLSriptText;
-    qry.SQL.SaveToFile('save.txt');
     qry.ExecSQL;
   finally
     qry.Free

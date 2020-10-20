@@ -56,16 +56,20 @@ object frmConsomation: TfrmConsomation
     Height = 301
     Cursor = crDefault
     Align = alClient
+    Color = clWhite
     ColCount = 6
     DrawingStyle = gdsClassic
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    Options = [goVertLine, goHorzLine, goRangeSelect, goFixedRowDefAlign]
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 1
+    GridLineColor = 15987699
+    GridFixedLineColor = 15987699
     HoverRowCells = [hcNormal, hcSelected]
     OnDblClickCell = asgDblClickCell
     OnCanEditCell = asgCanEditCell
@@ -120,7 +124,7 @@ object frmConsomation: TfrmConsomation
     FixedColWidth = 5
     FixedRowHeight = 22
     FixedFont.Charset = DEFAULT_CHARSET
-    FixedFont.Color = clWindowText
+    FixedFont.Color = clBlack
     FixedFont.Height = -11
     FixedFont.Name = 'Tahoma'
     FixedFont.Style = [fsBold]
@@ -151,6 +155,7 @@ object frmConsomation: TfrmConsomation
     PrintSettings.FooterFont.Name = 'Tahoma'
     PrintSettings.FooterFont.Style = []
     PrintSettings.PageNumSep = '/'
+    SearchFooter.ColorTo = clWhite
     SearchFooter.FindNextCaption = 'Find &next'
     SearchFooter.FindPrevCaption = 'Find &previous'
     SearchFooter.Font.Charset = DEFAULT_CHARSET
@@ -166,7 +171,7 @@ object frmConsomation: TfrmConsomation
     SearchFooter.MatchCaseCaption = 'Match case'
     SearchFooter.ResultFormat = '(%d of %d)'
     SortSettings.DefaultFormat = ssAutomatic
-    Version = '8.2.0.1'
+    Version = '8.5.4.0'
     ColWidths = (
       5
       64

@@ -53,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-uses FireDAC.Comp.Client, FireDAC.Stan.Param, Math, Consomation_unt;
+uses FireDAC.Comp.Client, FireDAC.Stan.Param, Math, Consomation_unt, Main_dmd;
 
 const
   COL_IDX_LOT = 1;
@@ -164,12 +164,17 @@ var
   tmp: string;
   y,m,d: word;
 begin
-  tmp := cbxDateR.Items[AItemIndex];
-  y := StrToInt(Copy(tmp, 1, 4));
-  m := StrToInt(Copy(tmp, 6, 2));
-  d := StrToInt(Copy(tmp, 9, 2));
+  if (AItemIndex >= 0) then
+  begin
+    tmp := cbxDateR.Items[AItemIndex];
+    y := StrToInt(Copy(tmp, 1, 4));
+    m := StrToInt(Copy(tmp, 6, 2));
+    d := StrToInt(Copy(tmp, 9, 2));
 
-  Result := EncodeDate(y,m,d);
+    Result := EncodeDate(y,m,d);
+  end
+  else
+    Result := Now;
 end;
 
 function TfrmConsomation.GetDataModified: Boolean;
@@ -224,6 +229,7 @@ begin
   ClearAsgObjects(asg);
   qry := FdmdConsomation.qryConsoDate;
   qry.ParamByName('COV_DATE').AsDateTime := GetConsomationDate(cbxDateR.ItemIndex);
+  qry.ParamByName('RE_ID').AsInteger := SelectedResidence.ID;
   qry.Open();
   try
     i := 0;
@@ -281,6 +287,7 @@ var
   qry: TFDQuery;
 begin
   qry := FdmdConsomation.qryDateList;
+  qry.ParamByName('RE_ID').AsInteger := SelectedResidence.ID;
   qry.Open();
   try
     while not qry.Eof do

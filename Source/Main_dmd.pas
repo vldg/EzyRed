@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Comp.Client, Data.DB, FireDAC.VCLUI.Wait, FireDAC.Comp.UI,
-  FireDAC.Phys.FBDef, FireDAC.VCLUI.Login;
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Login, Core.Residence;
 
 type
   TdmdMain = class(TDataModule)
@@ -24,6 +24,7 @@ type
 
 var
   dmdMain: TdmdMain;
+  SelectedResidence: TResidence;
 
 implementation
 

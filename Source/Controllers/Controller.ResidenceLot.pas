@@ -48,11 +48,18 @@ begin
   end
   else
   begin
-    Result := FManager.CreateCriteria<TResidenceLot>
-            .OrderBy('Number')
+    Result := FManager.Find<TResidenceLot>
+              .SubCriteria('REA_ID')
+                .SubCriteria('RE_ID')
+                  .Where(Linq['ID'] = RE_ID)
+                    .List<TResidenceLot>;
+
+
+(*    Result := FManager.CreateCriteria<TResidenceLot>
             .CreateAlias('RESIDENCE_ADDRESS', 'REA')
             .Where(Linq.Sql('{REA.RE_ID} = ' + IntToStr(RE_ID)))
-            .List;
+            .OrderBy('Number')
+            .List;       *)
   end;
 end;
 

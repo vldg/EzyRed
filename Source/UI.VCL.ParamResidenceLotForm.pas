@@ -70,7 +70,7 @@ implementation
 
 {$R *.dfm}
 
-uses DBConnection;
+uses DBConnection, Main_dmd;
 
 { TfrmParamResidenceLot }
 
@@ -145,7 +145,7 @@ end;
 
 procedure TfrmParamResidenceLot.Load;
 begin
-  FResidenceLots := FResidenceLotController.GetAll;
+  FResidenceLots := FResidenceLotController.GetAll(SelectedResidence.ID);
   FResidenceAddresss := FResidenceAddressController.GetAll;
   dtsResidence.SetSourceList(FResidenceAddresss);
   dtsMain.SetSourceList(FResidenceLots);

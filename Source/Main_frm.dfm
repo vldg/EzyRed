@@ -41,7 +41,7 @@ object frmMain: TfrmMain
     Persistence.Location = plRegistry
     Persistence.Enabled = False
     UseRunTimeHeight = False
-    Version = '6.5.1.1'
+    Version = '6.7.1.4'
   end
   object sbMain: TAdvOfficeStatusBar
     Left = 0
@@ -49,6 +49,11 @@ object frmMain: TfrmMain
     Width = 418
     Height = 19
     AnchorHint = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
     Panels = <
       item
         AppearanceStyle = psLight
@@ -150,7 +155,8 @@ object frmMain: TfrmMain
       end>
     ShowSplitter = True
     SimplePanel = False
-    Version = '1.6.2.1'
+    UseSystemFont = False
+    Version = '1.7.2.2'
   end
   object alMain: TActionList
     Left = 48
@@ -217,7 +223,7 @@ object frmMain: TfrmMain
     end
   end
   object mmMain: TAdvMainMenu
-    Version = '2.6.5.0'
+    Version = '2.7.1.1'
     Left = 280
     Top = 8
     object miFile: TMenuItem

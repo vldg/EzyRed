@@ -57,14 +57,11 @@ type
     procedure actPrintRentKitExecute(Sender: TObject);
   private
     { Déclarations privées }
-    FSelectedResidence: TResidence;
     procedure Load;
   public
     { Déclarations publiques }
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-
-    property SelectedResidence: TResidence read FSelectedResidence;
   end;
 
 var
@@ -74,7 +71,7 @@ implementation
 
 {$R *.dfm}
 
-uses Report_dmd,
+uses Report_dmd, Main_dmd,
      Controller.Residence,
      UI.VCL.ParamTitleForm,
      UI.VCL.ParamCustomerForm,
@@ -127,7 +124,7 @@ procedure TfrmMain.actParamResidenceAddressExecute(Sender: TObject);
 begin
   frmParamResidenceAddress := TfrmParamResidenceAddress.Create(Self);
   try
-    frmParamResidenceAddress.ResidenceID := FSelectedResidence.ID;
+    frmParamResidenceAddress.ResidenceID := SelectedResidence.ID;
 //    frmParamResidenceAddress.Residence := FSelectedResidence;
     frmParamResidenceAddress.ShowModal;
   finally
@@ -188,19 +185,18 @@ end;
 
 destructor TfrmMain.Destroy;
 begin
-  FSelectedResidence.DisposeOf;
   inherited;
 end;
 
 procedure TfrmMain.Load;
 begin
-  FSelectedResidence.DisposeOf;
+  SelectedResidence.Free;
   frmParamResidence := TfrmParamResidence.Create(Self);
   try
     if frmParamResidence.ShowModal = mrYes then
     begin
-      FSelectedResidence := TResidenceController.Get(frmParamResidence.SelectedID);
-      sbMain.Panels[0].Text := FSelectedResidence.Name;
+      SelectedResidence := TResidenceController.Get(frmParamResidence.SelectedID);
+      sbMain.Panels[0].Text := SelectedResidence.Name;
       sbMain.Panels[0].AutoSize := True;
     end;
   finally
