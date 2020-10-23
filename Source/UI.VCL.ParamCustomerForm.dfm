@@ -1,14 +1,14 @@
 inherited frmParamCustomer: TfrmParamCustomer
   Caption = 'Param'#233'trage des clients'
   ClientHeight = 418
-  ClientWidth = 654
-  ExplicitWidth = 670
+  ClientWidth = 691
+  ExplicitWidth = 707
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMain: TPanel
     Top = 200
-    Width = 654
+    Width = 691
     Height = 218
     ExplicitTop = 200
     ExplicitWidth = 654
@@ -169,11 +169,11 @@ inherited frmParamCustomer: TfrmParamCustomer
     end
   end
   inherited dpTop: TAdvDockPanel
-    Width = 654
+    Width = 691
     ExplicitWidth = 654
   end
   inherited dbgMain: TDBGrid
-    Width = 654
+    Width = 691
     Height = 158
   end
   inherited dtsMain: TAureliusDataset

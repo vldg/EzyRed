@@ -167,10 +167,6 @@ object frmOlap: TfrmOlap
     end
     object tshtGraph: TTabSheet
       Caption = 'Graphe'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object fcxChartToolBar1: TfcxChartToolBar
         Left = 0
         Top = 0
@@ -247,9 +243,14 @@ object frmOlap: TfrmOlap
   object qrySP_REPORT_CONSOMATION: TFDQuery
     Connection = dmdMain.dbMain
     SQL.Strings = (
-      'SELECT * FROM SP_REPORT_CONSOMATION')
+      'SELECT * FROM SP_REPORT_CONSOMATION(:RE_ID)')
     Left = 248
     Top = 200
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        ParamType = ptInput
+      end>
   end
   object fcxDataSource1: TfcxDataSource
     Version = '2.11.2'

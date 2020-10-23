@@ -49,12 +49,14 @@ type
     frxDBRESIDENCE_ADDRESS: TfrxDBDataset;
     qryRESIDENCE_LOT: TFDQuery;
     frxDBRESIDENCE_LOT: TfrxDBDataset;
-    DataSource1: TDataSource;
+    dsRESIDENCE_ADDRESS: TDataSource;
     qrySP_REPORT_CONSOMATION: TFDQuery;
     frxDBSP_REPORT_CONSOMATION: TfrxDBDataset;
     frxDBDataset1: TfrxDBDataset;
     FDQuery1: TFDQuery;
+    dsRESIDENCE: TDataSource;
     procedure frxReport1GetValue(const VarName: string; var Value: Variant);
+    procedure qryRESIDENCEBeforeOpen(DataSet: TDataSet);
   private
     { Déclarations privées }
   public
@@ -113,7 +115,7 @@ begin
   else
 }
   if VarName = 'CUBECAPTION' then
-    value := 'Résidence VAUVERT';
+    value := SelectedResidence.Name;
 {
   else
   if VarName = 'SCHEMACAPTION' then
@@ -123,15 +125,20 @@ end;
 
 class procedure TdmdReport.Preview(const AFileName: string);
 var
-  AdmdReport: TdmdReport;
+  LdmdReport: TdmdReport;
 begin
-  AdmdReport := TdmdReport.Create(nil);
+  LdmdReport := TdmdReport.Create(nil);
   try
-    AdmdReport.frxReport1.LoadFromFile(GetReportPath + AFileName);
-    AdmdReport.frxReport1.ShowReport;
+    LdmdReport.frxReport1.LoadFromFile(GetReportPath + AFileName);
+    LdmdReport.frxReport1.ShowReport;
   finally
-    AdmdReport.Free;
+    LdmdReport.Free;
   end;
+end;
+
+procedure TdmdReport.qryRESIDENCEBeforeOpen(DataSet: TDataSet);
+begin
+  qryRESIDENCE.ParamByName('RE_ID').AsInteger := SelectedResidence.ID;
 end;
 
 end.

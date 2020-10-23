@@ -55,7 +55,7 @@ implementation
 
 { TfrmOlap }
 
-uses Report_dmd;
+uses Report_dmd, Main_dmd;
 
 procedure TfrmOlap.Button1Click(Sender: TObject);
 begin
@@ -74,6 +74,7 @@ end;
 
 procedure TfrmOlap.CreateReportObjects;
 begin
+  qrySP_REPORT_CONSOMATION.ParamByName('RE_ID').AsInteger := SelectedResidence.ID;
   frxReport := TfrxReport.Create(Self);
 //  frxReport.OnGetValue := frxReportGetValue;
   frxDBDataset := TfrxDBDataset.Create(Self);

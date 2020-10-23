@@ -40,6 +40,7 @@ contains
   Core.Residence in 'Core.Residence.pas',
   Core.ResidenceAddress in 'Core.ResidenceAddress.pas',
   Core.ResidenceLot in 'Core.ResidenceLot.pas',
-  Core.Title in 'Core.Title.pas';
+  Core.Title in 'Core.Title.pas',
+  Core.LotEvent in 'Core.LotEvent.pas';
 
 end.

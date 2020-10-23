@@ -310,11 +310,19 @@ object dmdReport: TdmdReport
     Top = 145
   end
   object qryRESIDENCE: TFDQuery
+    BeforeOpen = qryRESIDENCEBeforeOpen
     Connection = dmdMain.dbMain
     SQL.Strings = (
-      'SELECT * FROM RESIDENCE')
+      'SELECT * FROM RESIDENCE RE'
+      'WHERE RE_ID =:RE_ID'
+      '')
     Left = 80
     Top = 216
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        ParamType = ptInput
+      end>
   end
   object frxDBRESIDENCE: TfrxDBDataset
     UserName = 'RESIDENCE'
@@ -328,11 +336,18 @@ object dmdReport: TdmdReport
     Top = 216
   end
   object qryRESIDENCE_ADDRESS: TFDQuery
+    MasterSource = dsRESIDENCE
     Connection = dmdMain.dbMain
     SQL.Strings = (
-      'SELECT * FROM RESIDENCE_ADDRESS')
+      'SELECT REA.* FROM RESIDENCE_ADDRESS REA'
+      'WHERE REA.RE_ID = :RE_ID')
     Left = 80
     Top = 272
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        ParamType = ptInput
+      end>
   end
   object frxDBRESIDENCE_ADDRESS: TfrxDBDataset
     UserName = 'RESIDENCE_ADDRESS'
@@ -349,7 +364,7 @@ object dmdReport: TdmdReport
     Top = 272
   end
   object qryRESIDENCE_LOT: TFDQuery
-    MasterSource = DataSource1
+    MasterSource = dsRESIDENCE_ADDRESS
     Connection = dmdMain.dbMain
     SQL.Strings = (
       'SELECT REL.*, '
@@ -393,7 +408,7 @@ object dmdReport: TdmdReport
     Left = 224
     Top = 328
   end
-  object DataSource1: TDataSource
+  object dsRESIDENCE_ADDRESS: TDataSource
     DataSet = qryRESIDENCE_ADDRESS
     Left = 384
     Top = 336
@@ -456,5 +471,10 @@ object dmdReport: TdmdReport
       '')
     Left = 472
     Top = 224
+  end
+  object dsRESIDENCE: TDataSource
+    DataSet = qryRESIDENCE
+    Left = 376
+    Top = 272
   end
 end
