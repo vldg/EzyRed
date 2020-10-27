@@ -26,7 +26,8 @@ uses
   Controller.ResidenceAddress in 'Controllers\Controller.ResidenceAddress.pas',
   UI.VCL.ParamResidenceAddressForm in 'UI.VCL.ParamResidenceAddressForm.pas' {frmParamResidenceAddress},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  Controller.LotEvent in 'Controllers\Controller.LotEvent.pas';
 
 {$R *.res}
 
@@ -36,7 +37,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
 {$ENDIF}
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Windows10');
   Application.CreateForm(TdmdMain, dmdMain);
   Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
