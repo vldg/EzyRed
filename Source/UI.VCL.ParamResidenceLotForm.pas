@@ -38,11 +38,14 @@ type
     dtsResidenceRE_ID: TAureliusEntityField;
     dtsMainREA_ADDRESS: TStringField;
     lblResidence: TLabel;
+    actParamLotEvent: TAction;
+    btnParamLotEvent: TButton;
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectRemove(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
     procedure actEntityCopyExecute(Sender: TObject);
     procedure actEntityPasteExecute(Sender: TObject);
+    procedure actParamLotEventExecute(Sender: TObject);
   private
     { Déclarations privées }
     FManager: TObjectManager;
@@ -70,7 +73,7 @@ implementation
 
 {$R *.dfm}
 
-uses DBConnection, Main_dmd;
+uses DBConnection, Main_dmd, UI.VCL.ParamLotEventForm;
 
 { TfrmParamResidenceLot }
 
@@ -93,6 +96,18 @@ begin
   dtsMainTantieme.AsVariant := FEditResidenceLot.Tantieme;
 //  dtsMainREA_ID.Variant := FEditResidenceLot.REA_ID;
 
+end;
+
+procedure TfrmParamResidenceLot.actParamLotEventExecute(Sender: TObject);
+begin
+  inherited;
+  frmParamLotEvent := TfrmParamLotEvent.Create(Self);
+  try
+    frmParamLotEvent.ResidenceLot := dtsMainSelf.AsObject as TResidenceLot;
+    frmParamLotEvent.ShowModal;
+  finally
+    frmParamLotEvent.Release;
+  end;
 end;
 
 constructor TfrmParamResidenceLot.Create(AOwner: TComponent);

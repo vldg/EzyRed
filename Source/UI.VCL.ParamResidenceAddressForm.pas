@@ -94,11 +94,8 @@ end;
 
 procedure TfrmParamResidenceAddress.dtsMainObjectInsert(Dataset: TDataSet;
   AObject: TObject);
-//var
-//  AResidenceAddress: TResidenceAddress;
 begin
   inherited;
-//  AResidenceAddress := TResidenceAddress(AObject);
   FController.Save(TResidenceAddress(AObject));
 end;
 

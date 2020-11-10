@@ -1,7 +1,5 @@
 inherited frmParamCountry: TfrmParamCountry
   Caption = 'Param'#233'trage des pays'
-  ExplicitWidth = 434
-  ExplicitHeight = 414
   PixelsPerInch = 96
   TextHeight = 13
   inherited dtsMain: TAureliusDataset

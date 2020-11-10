@@ -87,6 +87,14 @@ inherited frmParamResidenceLot: TfrmParamResidenceLot
       DataSource = dsMain
       TabOrder = 4
     end
+    object btnParamLotEvent: TButton
+      Left = 360
+      Top = 72
+      Width = 193
+      Height = 25
+      Action = actParamLotEvent
+      TabOrder = 5
+    end
   end
   inherited dpTop: TAdvDockPanel
     Width = 562
@@ -189,6 +197,10 @@ inherited frmParamResidenceLot: TfrmParamResidenceLot
     end
     inherited actEntityPaste: TAction
       OnExecute = actEntityPasteExecute
+    end
+    object actParamLotEvent: TAction
+      Caption = 'Param'#233'trage des propri'#233'taires'
+      OnExecute = actParamLotEventExecute
     end
   end
   object dtsResidence: TAureliusDataset

@@ -27,7 +27,8 @@ uses
   UI.VCL.ParamResidenceAddressForm in 'UI.VCL.ParamResidenceAddressForm.pas' {frmParamResidenceAddress},
   Vcl.Themes,
   Vcl.Styles,
-  Controller.LotEvent in 'Controllers\Controller.LotEvent.pas';
+  Controller.LotEvent in 'Controllers\Controller.LotEvent.pas',
+  UI.VCL.ParamLotEventForm in 'UI.VCL.ParamLotEventForm.pas' {frmParamLotEvent};
 
 {$R *.res}
 

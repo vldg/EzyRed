@@ -19,6 +19,7 @@ type
     procedure Load(AId: Variant);
 
     function GetAll(const RE_ID: Integer = -1): TList<TLotEvent>;
+    function GetAllEvent(const REL_ID: Integer): TList<TLotEvent>;
   end;
 
 
@@ -53,6 +54,16 @@ begin
                     .Where(Linq['ID'] = RE_ID)
                       .List<TLotEvent>;
   end;
+end;
+
+function TLotEventController.GetAllEvent(const REL_ID: Integer): TList<TLotEvent>;
+begin
+  if FOwnManager then
+    FManager.Clear;
+
+  Result := FManager.Find<TLotEvent>
+           .Where(Linq['REL_ID'] = REL_ID)
+            .List;
 end;
 
 procedure TLotEventController.Load(AId: Variant);

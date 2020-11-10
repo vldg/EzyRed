@@ -11,7 +11,7 @@ inherited frmParamCustomer: TfrmParamCustomer
     Width = 691
     Height = 218
     ExplicitTop = 200
-    ExplicitWidth = 654
+    ExplicitWidth = 691
     ExplicitHeight = 218
     object lblT_NAME: TLabel
       Left = 3
@@ -170,7 +170,7 @@ inherited frmParamCustomer: TfrmParamCustomer
   end
   inherited dpTop: TAdvDockPanel
     Width = 691
-    ExplicitWidth = 654
+    ExplicitWidth = 691
   end
   inherited dbgMain: TDBGrid
     Width = 691
