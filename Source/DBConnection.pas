@@ -240,25 +240,7 @@ end;
 {$IFDEF FIREDAC}
 function TDBConnection.CreateFireDACAdapterFromIniFile(
   AIniFile: TMemIniFile): IDBConnection;
-var
-  Conn: TFDConnection;
-  ConnectionName: string;
 begin
-//  Result := nil;
-//  ConnectionName := AIniFile.ReadString('Config', 'ConnectionName', '');
-//  Conn := TFDConnection.Create(nil);
-//  Conn.ConnectionName := ConnectionName;
-//  Conn.DriverName := 'FB';
-//        dbMain.DriverName := 'FIREBIRD';
-//        dbMain.LibraryName := 'dbxfb.dll';
-//        dbMain.GetDriverFunc
-//  Conn.Params.Values['user_name'] := 'ADMIN';
-//  Conn.Params.Values['Password'] := 'admin';
-//  Conn.Params.Values['database'] := 'C:\Software\residence\RESIDENCE.FDB';
-//  Conn.Params.Values['ServerCharSet'] := 'UTF8';
-//        Conn.VendorLib := 'fbclient.dll';
-//  Conn.Connected := True;
-
   Result := TFireDacConnectionAdapter.Create(dmdMain.dbMain, dmdMain);
 end;
 {$ENDIF}

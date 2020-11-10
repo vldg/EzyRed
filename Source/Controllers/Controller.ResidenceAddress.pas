@@ -36,7 +36,7 @@ function TResidenceAddressController.GetAll: TList<TResidenceAddress>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.FindAll<TResidenceAddress>;
+  Result := FManager.Find<TResidenceAddress>.List;
 
 //  Result := FManager.Find<>
 end;

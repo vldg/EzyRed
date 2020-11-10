@@ -19,6 +19,7 @@ type
     procedure Load(AId: Variant);
 
     function GetAll(const RE_ID: Integer = -1): TList<TResidenceLot>;
+    function GetOne(const REL_ID: Integer): TResidenceLot;
   end;
 
 
@@ -61,6 +62,16 @@ begin
             .OrderBy('Number')
             .List;       *)
   end;
+end;
+
+function TResidenceLotController.GetOne(const REL_ID: Integer): TResidenceLot;
+var
+  AId: Variant;
+begin
+  if not FManager.IsAttached(FResidenceLot) then
+    FResidenceLot.Free;
+  AId := REL_ID;
+  Result := FManager.Find<TResidenceLot>(AId);
 end;
 
 procedure TResidenceLotController.Load(AId: Variant);

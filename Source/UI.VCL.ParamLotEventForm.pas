@@ -89,10 +89,14 @@ begin
 end;
 
 procedure TfrmParamLotEvent.dtsMainNewRecord(DataSet: TDataSet);
+var
+  LResidenceLot: TResidenceLot;
 begin
   inherited;
 //  dtsMainREL_ID.AsInteger := FResidenceLot.ID;
-  dtsMainREL_ID.AsObject := FResidenceLot;
+  LResidenceLot := FResidenceLotController.GetOne(FResidenceLot.ID);
+
+  dtsMainREL_ID.AsObject := LResidenceLot;
  // FResidenceLotController.Load()
 
 end;

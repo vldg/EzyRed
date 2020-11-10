@@ -35,7 +35,7 @@ function TTitleController.GetAll: TList<TTitle>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.FindAll<TTitle>;
+  Result := FManager.Find<TTitle>.List;
 end;
 
 procedure TTitleController.Load(AId: Variant);

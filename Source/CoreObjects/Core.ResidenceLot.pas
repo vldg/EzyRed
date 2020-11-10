@@ -37,7 +37,7 @@ type
     [Column('REL_TANTIEME', [TColumnProp.Required])]
     FTantieme: Integer;
 
-    [Association([TAssociationProp.Lazy, TAssociationProp.Required], [])]
+    [Association([TAssociationProp.Lazy, TAssociationProp.Required], CascadeTypeAllButRemove)]
     [JoinColumn('REA_ID', [TColumnProp.Required], 'REA_ID')]
     FREA_ID: Proxy<TResidenceAddress>;
     function GetREA_ID: TResidenceAddress;

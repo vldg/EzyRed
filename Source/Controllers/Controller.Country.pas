@@ -35,7 +35,7 @@ function TCountryController.GetAll: TList<TCountry>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.FindAll<TCountry>;
+  Result := FManager.Find<TCountry>.List;
 end;
 
 procedure TCountryController.Load(AId: Variant);

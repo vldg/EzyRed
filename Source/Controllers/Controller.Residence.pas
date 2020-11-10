@@ -50,7 +50,7 @@ function TResidenceController.GetAll: TList<TResidence>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.FindAll<TResidence>;
+  Result := FManager.Find<TResidence>.List;
 end;
 
 function TResidenceController.GetOne(AId: Variant): TResidence;
