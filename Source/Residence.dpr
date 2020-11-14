@@ -28,7 +28,9 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   Controller.LotEvent in 'Controllers\Controller.LotEvent.pas',
-  UI.VCL.ParamLotEventForm in 'UI.VCL.ParamLotEventForm.pas' {frmParamLotEvent};
+  UI.VCL.ParamLotEventForm in 'UI.VCL.ParamLotEventForm.pas' {frmParamLotEvent},
+  Controller.BankAccountLine in 'Controllers\Controller.BankAccountLine.pas',
+  UI.VCL.BankAccountLineForm in 'UI.VCL.BankAccountLineForm.pas' {frmBankAccountLineForm};
 
 {$R *.res}
 

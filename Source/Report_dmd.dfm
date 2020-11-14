@@ -376,7 +376,8 @@ object dmdReport: TdmdReport
       'LEFT OUTER JOIN TITLE T ON (CU.T_ID = T.T_ID)'
       'WHERE REL.REA_ID =:REA_ID'
       'AND LE.LE_TYPE = 0'
-      'AND LE.LE_END IS NULL')
+      'AND LE.LE_END IS NULL'
+      'ORDER BY REL.REL_NUMBER')
     Left = 80
     Top = 328
     ParamData = <

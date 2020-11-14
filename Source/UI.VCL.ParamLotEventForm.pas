@@ -75,15 +75,14 @@ begin
   FManager := TDBConnection.GetInstance.CreateObjectManager;
   FLotEventController := TLotEventController.Create(FManager);
   FCustomerController := TCustomerController.Create(FManager);
-
   FResidenceLotController := TResidenceLotController.Create(FManager);
 end;
 
 destructor TfrmParamLotEvent.Destroy;
 begin
-
   FCustomerController.Free;
   FLotEventController.Free;
+  FResidenceLotController.Free;
   FManager.Free;
   inherited;
 end;
@@ -93,23 +92,14 @@ var
   LResidenceLot: TResidenceLot;
 begin
   inherited;
-//  dtsMainREL_ID.AsInteger := FResidenceLot.ID;
   LResidenceLot := FResidenceLotController.GetOne(FResidenceLot.ID);
-
   dtsMainREL_ID.AsObject := LResidenceLot;
- // FResidenceLotController.Load()
-
 end;
 
 procedure TfrmParamLotEvent.dtsMainObjectInsert(Dataset: TDataSet;
   AObject: TObject);
-//var
-//  LLotEvent: TLotEvent;
 begin
   inherited;
-//  LLotEvent := AObject as TLotEvent;
-//  LLotEvent.REL_ID := FResidenceLot;
-//  FLotEventController.Save(LLotEvent);
   FLotEventController.Save(TLotEvent(AObject));
 end;
 

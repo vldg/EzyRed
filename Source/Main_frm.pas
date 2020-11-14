@@ -43,6 +43,8 @@ type
     MiPrintResidence: TMenuItem;
     actPrintRentKit: TAction;
     miPrintRentKit: TMenuItem;
+    actBankAccountLine: TAction;
+    miBankAccountLine: TMenuItem;
     procedure actConsomationExecute(Sender: TObject);
     procedure actDesignReportExecute(Sender: TObject);
     procedure actParamTitleExecute(Sender: TObject);
@@ -55,6 +57,7 @@ type
     procedure actStatCubeExecute(Sender: TObject);
     procedure actPrintResidenceExecute(Sender: TObject);
     procedure actPrintRentKitExecute(Sender: TObject);
+    procedure actBankAccountLineExecute(Sender: TObject);
   private
     { Déclarations privées }
     procedure Load;
@@ -78,7 +81,18 @@ uses Report_dmd, Main_dmd,
      UI.VCL.ParamResidenceForm,
      UI.VCL.ParamResidenceAddressForm,
      UI.VCL.ParamResidenceLotForm,
-     UI.VCL.ParamCountry;
+     UI.VCL.ParamCountry,
+     UI.VCL.BankAccountLineForm;
+
+procedure TfrmMain.actBankAccountLineExecute(Sender: TObject);
+begin
+  frmBankAccountLineForm := TfrmBankAccountLineForm.Create(Self);
+  try
+    frmBankAccountLineForm.ShowModal;
+  finally
+    frmBankAccountLineForm.Release;
+  end;
+end;
 
 procedure TfrmMain.actConsomationExecute(Sender: TObject);
 begin

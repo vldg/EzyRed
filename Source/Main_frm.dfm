@@ -221,6 +221,10 @@ object frmMain: TfrmMain
       Caption = 'Impression d'#39'un kit de location'
       OnExecute = actPrintRentKitExecute
     end
+    object actBankAccountLine: TAction
+      Caption = 'Saisie des lignes de comptes'
+      OnExecute = actBankAccountLineExecute
+    end
   end
   object mmMain: TAdvMainMenu
     Version = '2.7.1.1'
@@ -251,6 +255,9 @@ object frmMain: TfrmMain
       end
       object miParamCountry: TMenuItem
         Action = actParamCountry
+      end
+      object miBankAccountLine: TMenuItem
+        Action = actBankAccountLine
       end
     end
     object miPrint: TMenuItem
