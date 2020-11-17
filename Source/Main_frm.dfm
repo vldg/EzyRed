@@ -159,8 +159,8 @@ object frmMain: TfrmMain
     Version = '1.7.2.2'
   end
   object alMain: TActionList
-    Left = 48
-    Top = 24
+    Left = 40
+    Top = 64
     object actConsomation: TAction
       Caption = 'Consomation'
       OnExecute = actConsomationExecute
@@ -225,6 +225,11 @@ object frmMain: TfrmMain
       Caption = 'Saisie des lignes de comptes'
       OnExecute = actBankAccountLineExecute
     end
+    object actParamLineKind: TAction
+      Category = 'Param'
+      Caption = 'Param'#233'trage des types de ligne'
+      OnExecute = actParamLineKindExecute
+    end
   end
   object mmMain: TAdvMainMenu
     Version = '2.7.1.1'
@@ -258,6 +263,9 @@ object frmMain: TfrmMain
       end
       object miBankAccountLine: TMenuItem
         Action = actBankAccountLine
+      end
+      object miParamLineKind: TMenuItem
+        Action = actParamLineKind
       end
     end
     object miPrint: TMenuItem

@@ -194,8 +194,10 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
     end
     object dtsMainCU_ID: TAureliusEntityField
       FieldName = 'CU_ID'
+      Visible = False
     end
     object dtsMainCU_NAME: TStringField
+      DisplayLabel = 'Tiers'
       FieldKind = fkLookup
       FieldName = 'CU_NAME'
       LookupDataSet = dtsCustomers

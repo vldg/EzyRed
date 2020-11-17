@@ -30,7 +30,9 @@ uses
   Controller.LotEvent in 'Controllers\Controller.LotEvent.pas',
   UI.VCL.ParamLotEventForm in 'UI.VCL.ParamLotEventForm.pas' {frmParamLotEvent},
   Controller.BankAccountLine in 'Controllers\Controller.BankAccountLine.pas',
-  UI.VCL.BankAccountLineForm in 'UI.VCL.BankAccountLineForm.pas' {frmBankAccountLineForm};
+  UI.VCL.BankAccountLineForm in 'UI.VCL.BankAccountLineForm.pas' {frmBankAccountLineForm},
+  Controller.LineKind in 'Controllers\Controller.LineKind.pas',
+  UI.VCL.ParamLineKind in 'UI.VCL.ParamLineKind.pas' {frmParamLineKind};
 
 {$R *.res}
 

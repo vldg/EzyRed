@@ -45,6 +45,8 @@ type
     miPrintRentKit: TMenuItem;
     actBankAccountLine: TAction;
     miBankAccountLine: TMenuItem;
+    actParamLineKind: TAction;
+    miParamLineKind: TMenuItem;
     procedure actConsomationExecute(Sender: TObject);
     procedure actDesignReportExecute(Sender: TObject);
     procedure actParamTitleExecute(Sender: TObject);
@@ -58,6 +60,7 @@ type
     procedure actPrintResidenceExecute(Sender: TObject);
     procedure actPrintRentKitExecute(Sender: TObject);
     procedure actBankAccountLineExecute(Sender: TObject);
+    procedure actParamLineKindExecute(Sender: TObject);
   private
     { Déclarations privées }
     procedure Load;
@@ -82,7 +85,8 @@ uses Report_dmd, Main_dmd,
      UI.VCL.ParamResidenceAddressForm,
      UI.VCL.ParamResidenceLotForm,
      UI.VCL.ParamCountry,
-     UI.VCL.BankAccountLineForm;
+     UI.VCL.BankAccountLineForm,
+     UI.VCL.ParamLineKind;
 
 procedure TfrmMain.actBankAccountLineExecute(Sender: TObject);
 begin
@@ -131,6 +135,16 @@ begin
     frmParamCustomer.ShowModal;
   finally
     frmParamCustomer.Release;
+  end;
+end;
+
+procedure TfrmMain.actParamLineKindExecute(Sender: TObject);
+begin
+  frmParamLineKind := TfrmParamLineKind.Create(Self);
+  try
+    frmParamLineKind.ShowModal;
+  finally
+    frmParamLineKind.Release;
   end;
 end;
 

@@ -42,6 +42,7 @@ contains
   Core.ResidenceLot in 'Core.ResidenceLot.pas',
   Core.Title in 'Core.Title.pas',
   Core.LotEvent in 'Core.LotEvent.pas',
-  Core.BankAccountLine in 'Core.BankAccountLine.pas';
+  Core.BankAccountLine in 'Core.BankAccountLine.pas',
+  Core.LineKind in 'Core.LineKind.pas';
 
 end.
