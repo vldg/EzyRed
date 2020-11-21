@@ -130,8 +130,6 @@ begin
 end;
 
 procedure TfrmParamCustomer.Load;
-var
-  lfTitle: TStringField;
 begin
   FManager.Clear;
 

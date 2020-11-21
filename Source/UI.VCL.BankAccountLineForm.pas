@@ -8,7 +8,7 @@ uses
   Data.DB, Aurelius.Bind.BaseDataset, System.Actions, Vcl.ActnList,
   Aurelius.Bind.Dataset, Vcl.Grids, Vcl.DBGrids, AdvToolBar, Vcl.ExtCtrls,
   System.Generics.Collections, Core.BankAccountLine, Controller.BankAccountLine, Controller.Residence,
-  Controller.Customer, Core.Customer,
+  Controller.Customer, Core.Customer, Core.LineKind, Controller.LineKind,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, AdvDateTimePicker,
   AdvDBDateTimePicker;
 
@@ -39,6 +39,15 @@ type
     lblName: TLabel;
     dtsMainCU_NAME: TStringField;
     dblcbCustomers: TDBLookupComboBox;
+    dtsLineKind: TAureliusDataset;
+    dtsLineKindSelf: TAureliusEntityField;
+    dtsLineKindID: TIntegerField;
+    dtsLineKindName: TStringField;
+    dtsLineKindCode: TStringField;
+    dtsMainLK_ID: TAureliusEntityField;
+    dtsMainLK_NAME: TStringField;
+    dsLineKind: TDataSource;
+    dblcbLineKind: TDBLookupComboBox;
     procedure dtsMainNewRecord(DataSet: TDataSet);
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
@@ -48,8 +57,10 @@ type
     FManager: TObjectManager;
     FBankAccountLines: TList<TBankAccountLine>;
     FCustomers: TList<TCustomer>;
+    FLineKinds: TList<TLineKind>;
     FBankAccountLineController: TBankAccountLineController;
     FCustomerController: TCustomerController;
+    FLineKindController: TLineKindController;
     FResidenceController: TResidenceController;
 
     procedure Load;
@@ -81,6 +92,7 @@ begin
   FBankAccountLineController := TBankAccountLineController.Create(FManager);
   FResidenceController := TResidenceController.Create(FManager);
   FCustomerController := TCustomerController.Create(FManager);
+  FLineKindController := TLineKindController.Create(FManager);
   Load;
 end;
 
@@ -91,6 +103,8 @@ begin
   FResidenceController.Free;
   FCustomers.Free;
   FCustomerController.Free;
+  FLineKinds.Free;
+  FLineKindController.Free;
   FManager.Free;
   inherited;
 end;
@@ -133,6 +147,8 @@ procedure TfrmBankAccountLineForm.Load;
 begin
   FCustomers := FCustomerController.GetAll;
   dtsCustomers.SetSourceList(FCustomers);
+  FLineKinds := FLineKindController.GetAll;
+  dtsLineKind.SetSourceList(FLineKinds);
   FBankAccountLines := FBankAccountLineController.GetAll(SelectedResidence.ID);
   dtsMain.SetSourceList(FBankAccountLines);
   dtsMain.Active := True;

@@ -11,7 +11,8 @@ uses
   Aurelius.Types.Proxy,
   Aurelius.Criteria.Dictionary,
   Core.Customer,
-  Core.Residence;
+  Core.Residence,
+  Core.LineKind;
 
 type
   [Entity]
@@ -34,6 +35,10 @@ type
     [JoinColumn('RE_ID', [TColumnProp.Required], 'RE_ID')]
     FRE_ID: Proxy<TResidence>;
 
+    [Association([TAssociationProp.Lazy, TAssociationProp.Required], [])]
+    [JoinColumn('LK_ID', [TColumnProp.Required], 'LK_ID')]
+    FLK_ID: Proxy<TLineKind>;
+
     [Column('BAL_DEBIT', [], 7, 2)]
     FDebit: Nullable<double>;
     [Column('BAL_CREDIT', [], 7, 2)]
@@ -41,11 +46,12 @@ type
     [Column('BAL_LABEL', [], 32)]
     FLabel: Nullable<string>;
 
-
     function GetCU_ID: TCustomer;
     function GetRE_ID: TResidence;
     procedure SetCU_ID(const Value: TCustomer);
     procedure SetRE_ID(const Value: TResidence);
+    function GetLK_ID: TLineKind;
+    procedure SetLK_ID(const Value: TLineKind);
   public
     property ID: integer read FID write FID;
     property RE_ID: TResidence read GetRE_ID write SetRE_ID;
@@ -54,6 +60,7 @@ type
     property Credit: Nullable<double> read FCredit write FCredit;
     property Debit: Nullable<double> read FDebit write FDebit;
     property CU_ID: TCustomer read GetCU_ID write SetCU_ID;
+    property LK_ID: TLineKind read GetLK_ID write SetLK_ID;
   end;
 
 
@@ -66,6 +73,11 @@ begin
   Result := FCU_ID.Value;
 end;
 
+function TBankAccountLine.GetLK_ID: TLineKind;
+begin
+  Result := FLK_ID.Value;
+end;
+
 function TBankAccountLine.GetRE_ID: TResidence;
 begin
   Result := FRE_ID.Value;
@@ -74,6 +86,11 @@ end;
 procedure TBankAccountLine.SetCU_ID(const Value: TCustomer);
 begin
   FCU_ID.Value := Value;
+end;
+
+procedure TBankAccountLine.SetLK_ID(const Value: TLineKind);
+begin
+  FLK_ID.Value := Value;
 end;
 
 procedure TBankAccountLine.SetRE_ID(const Value: TResidence);

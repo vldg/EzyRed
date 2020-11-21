@@ -32,7 +32,8 @@ uses
   Controller.BankAccountLine in 'Controllers\Controller.BankAccountLine.pas',
   UI.VCL.BankAccountLineForm in 'UI.VCL.BankAccountLineForm.pas' {frmBankAccountLineForm},
   Controller.LineKind in 'Controllers\Controller.LineKind.pas',
-  UI.VCL.ParamLineKind in 'UI.VCL.ParamLineKind.pas' {frmParamLineKind};
+  UI.VCL.ParamLineKind in 'UI.VCL.ParamLineKind.pas' {frmParamLineKind},
+  Controller.LineKindLot in 'Controllers\Controller.LineKindLot.pas';
 
 {$R *.res}
 

@@ -107,6 +107,17 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       ListSource = dsCustomers
       TabOrder = 4
     end
+    object dblcbLineKind: TDBLookupComboBox
+      Left = 512
+      Top = 80
+      Width = 145
+      Height = 21
+      DataField = 'LK_NAME'
+      DataSource = dsMain
+      ListField = 'Name'
+      ListSource = dsLineKind
+      TabOrder = 5
+    end
   end
   inherited dpTop: TAdvDockPanel
     Width = 757
@@ -152,6 +163,11 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       end
       item
         Name = 'CU_ID'
+        Attributes = [faRequired]
+        DataType = ftVariant
+      end
+      item
+        Name = 'LK_ID'
         Attributes = [faRequired]
         DataType = ftVariant
       end>
@@ -205,6 +221,21 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       LookupResultField = 'Name'
       KeyFields = 'CU_ID'
       Size = 32
+      Lookup = True
+    end
+    object dtsMainLK_ID: TAureliusEntityField
+      FieldName = 'LK_ID'
+      Visible = False
+    end
+    object dtsMainLK_NAME: TStringField
+      DisplayLabel = 'Cl'#233
+      FieldKind = fkLookup
+      FieldName = 'LK_NAME'
+      LookupDataSet = dtsLineKind
+      LookupKeyFields = 'Self'
+      LookupResultField = 'Name'
+      KeyFields = 'LK_ID'
+      Size = 30
       Lookup = True
     end
   end
@@ -297,5 +328,52 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       FieldName = 'FirstName'
       Size = 32
     end
+  end
+  object dtsLineKind: TAureliusDataset
+    FieldDefs = <
+      item
+        Name = 'Self'
+        Attributes = [faReadonly]
+        DataType = ftVariant
+      end
+      item
+        Name = 'ID'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'Name'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'Code'
+        DataType = ftString
+        Size = 5
+      end>
+    Left = 192
+    Top = 200
+    DesignClass = 'Core.LineKind.TLineKind'
+    object dtsLineKindSelf: TAureliusEntityField
+      FieldName = 'Self'
+      ReadOnly = True
+    end
+    object dtsLineKindID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+    end
+    object dtsLineKindName: TStringField
+      FieldName = 'Name'
+      Size = 30
+    end
+    object dtsLineKindCode: TStringField
+      FieldName = 'Code'
+      Size = 5
+    end
+  end
+  object dsLineKind: TDataSource
+    DataSet = dtsLineKind
+    Left = 264
+    Top = 200
   end
 end
