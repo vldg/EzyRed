@@ -31,9 +31,14 @@ type
     dbrgType: TDBRadioGroup;
     lblResidence: TLabel;
     dbeResidenceAddress: TDBLookupComboBox;
+    btnParamKindLineLot: TButton;
+    actParamKindLineLot: TAction;
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectRemove(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
+    procedure dtsMainAfterScroll(DataSet: TDataSet);
+    procedure dbrgTypeChange(Sender: TObject);
+    procedure actParamKindLineLotExecute(Sender: TObject);
     procedure dtsMainNewRecord(DataSet: TDataSet);
   private
     { Déclarations privées }
@@ -47,8 +52,11 @@ type
 
     FResidenceController: TResidenceController;
 
-    procedure Flush; override;
     procedure Load;
+
+    procedure DisplayLine(const AType: Integer);
+  protected
+    procedure Flush; override;
   public
     { Déclarations publiques }
     constructor Create(AOwner: TComponent); override;
@@ -64,7 +72,19 @@ implementation
 
 { TfrmParamLineKind }
 
-uses DBConnection, Main_dmd;
+uses DBConnection, Main_dmd, UI.VCL.ParamLineKindLot;
+
+procedure TfrmParamLineKind.actParamKindLineLotExecute(Sender: TObject);
+begin
+  inherited;
+  frmParamLineKindLot := TfrmParamLineKindLot.Create(Self);
+  try
+    frmParamLineKindLot.LK_ID := dtsMainID.AsInteger;
+    frmParamLineKindLot.ShowModal;
+  finally
+    frmParamLineKindLot.Release;
+  end;
+end;
 
 constructor TfrmParamLineKind.Create(AOwner: TComponent);
 begin
@@ -74,6 +94,12 @@ begin
   FResidenceController := TResidenceController.Create(FManager);
   FResidenceAddressController := TResidenceAddressController.Create(FManager);
   Load;
+end;
+
+procedure TfrmParamLineKind.dbrgTypeChange(Sender: TObject);
+begin
+  inherited;
+  DisplayLine(dbrgType.ItemIndex);
 end;
 
 destructor TfrmParamLineKind.Destroy;
@@ -86,6 +112,19 @@ begin
   FLineKinds.Free;
   FManager.Free;
   inherited;
+end;
+
+procedure TfrmParamLineKind.DisplayLine(const AType: Integer);
+begin
+  dbeResidenceAddress.Visible := (AType = 1);
+  lblResidence.Visible := dbeResidenceAddress.Visible;
+  actParamKindLineLot.Visible := (AType in [2, 3]);
+end;
+
+procedure TfrmParamLineKind.dtsMainAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  DisplayLine(DataSet.FieldByName('Type_').AsInteger);
 end;
 
 procedure TfrmParamLineKind.dtsMainNewRecord(DataSet: TDataSet);

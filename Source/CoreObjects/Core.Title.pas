@@ -14,7 +14,7 @@ uses
 type
   [Entity]
   [Description('Title definition for customer')]
-  [Table('LIND_KIND_LOT')]
+  [Table('TITLE')]
   [Sequence('GEN_TITLE_ID')]
   [Id('FID', TIdGenerator.IdentityOrSequence)]
   TTitle = class

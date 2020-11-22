@@ -227,7 +227,7 @@ object frmMain: TfrmMain
     end
     object actParamLineKind: TAction
       Category = 'Param'
-      Caption = 'Param'#233'trage des types de ligne'
+      Caption = 'Param'#233'trage des cl'#233's de r'#233'partition'
       OnExecute = actParamLineKindExecute
     end
   end

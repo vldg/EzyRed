@@ -11,6 +11,7 @@ inherited frmParamLineKind: TfrmParamLineKind
     Width = 595
     Height = 173
     ExplicitTop = 240
+    ExplicitWidth = 595
     ExplicitHeight = 173
     object lblName: TLabel
       Left = 8
@@ -72,6 +73,7 @@ inherited frmParamLineKind: TfrmParamLineKind
         '1'
         '2'
         '3')
+      OnChange = dbrgTypeChange
     end
     object dbeResidenceAddress: TDBLookupComboBox
       Left = 330
@@ -82,9 +84,18 @@ inherited frmParamLineKind: TfrmParamLineKind
       DataSource = dsMain
       TabOrder = 3
     end
+    object btnParamKindLineLot: TButton
+      Left = 360
+      Top = 72
+      Width = 193
+      Height = 25
+      Action = actParamKindLineLot
+      TabOrder = 4
+    end
   end
   inherited dpTop: TAdvDockPanel
     Width = 595
+    ExplicitWidth = 595
   end
   inherited dbgMain: TDBGrid
     Width = 595
@@ -127,6 +138,7 @@ inherited frmParamLineKind: TfrmParamLineKind
         Attributes = [faRequired]
         DataType = ftVariant
       end>
+    AfterScroll = dtsMainAfterScroll
     OnNewRecord = dtsMainNewRecord
     DesignClass = 'Core.LineKind.TLineKind'
     object dtsMainSelf: TAureliusEntityField
@@ -173,6 +185,12 @@ inherited frmParamLineKind: TfrmParamLineKind
       Lookup = True
     end
   end
+  inherited alMain: TActionList
+    object actParamKindLineLot: TAction
+      Caption = 'Param'#233'trage des lots'
+      OnExecute = actParamKindLineLotExecute
+    end
+  end
   object dtsResidenceAddress: TAureliusDataset
     FieldDefs = <
       item
@@ -206,7 +224,6 @@ inherited frmParamLineKind: TfrmParamLineKind
         Attributes = [faRequired]
         DataType = ftVariant
       end>
-    OnNewRecord = dtsMainNewRecord
     OnObjectInsert = dtsMainObjectInsert
     OnObjectUpdate = dtsMainObjectUpdate
     OnObjectRemove = dtsMainObjectRemove

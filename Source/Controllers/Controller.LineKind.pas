@@ -18,6 +18,9 @@ type
     procedure Load(AId: Variant);
 
     function GetAll: TList<TLineKind>;
+
+    function GetOne(AId: Variant): TLineKind;
+    class function Get(AId: Variant): TLineKind;
   end;
 
 
@@ -32,11 +35,29 @@ begin
   FManager.Remove(ALineKind);
 end;
 
+class function TLineKindController.Get(AId: Variant): TLineKind;
+var
+  AController: TLineKindController;
+begin
+  AController := TLineKindController.Create;
+  try
+    Result := AController.GetOne(AId);
+    AController.FManager.Evict(Result);
+  finally
+    AController.Free
+  end;
+end;
+
 function TLineKindController.GetAll: TList<TLineKind>;
 begin
   if FOwnManager then
     FManager.Clear;
   Result := FManager.Find<TLineKind>.List;
+end;
+
+function TLineKindController.GetOne(AId: Variant): TLineKind;
+begin
+  Result := FManager.Find<TLineKind>(AId);
 end;
 
 procedure TLineKindController.Load(AId: Variant);

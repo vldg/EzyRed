@@ -18,7 +18,7 @@ type
     procedure Save(ALineKindLot: TLineKindLot);
     procedure Load(AId: Variant);
 
-    function GetAll(const RE_ID: Integer = -1): TList<TLineKindLot>;
+    function GetAll(const LK_ID: Integer = -1): TList<TLineKindLot>;
   end;
 
 implementation
@@ -33,11 +33,16 @@ begin
 end;
 
 function TLineKindLotController.GetAll(
-  const RE_ID: Integer): TList<TLineKindLot>;
+  const LK_ID: Integer): TList<TLineKindLot>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.Find<TLineKindLot>.List;
+  if (LK_ID = -1) then
+    Result := FManager.Find<TLineKindLot>.List
+  else
+    Result := FManager.Find<TLineKindLot>
+             .Where(Linq['LK_ID'] = LK_ID)
+             .List;
 end;
 
 procedure TLineKindLotController.Load(AId: Variant);

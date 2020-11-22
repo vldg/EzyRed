@@ -28,7 +28,7 @@ type
     procedure dtsMainObjectRemove(Dataset: TDataSet; AObject: TObject);
   private
     { Déclarations privées }
-    FController: TTitleController;
+    FTitleController: TTitleController;
     FTitles: TList<TTitle>;
 
     procedure Load;
@@ -52,14 +52,14 @@ implementation
 constructor TfrmParamTitle.Create(AOwner: TComponent);
 begin
   inherited;
-  FController := TTitleController.Create;
+  FTitleController := TTitleController.Create;
   Load;
 end;
 
 destructor TfrmParamTitle.Destroy;
 begin
   FTitles.Free;
-  FController.Free;
+  FTitleController.Free;
   inherited;
 end;
 
@@ -74,32 +74,32 @@ procedure TfrmParamTitle.dtsMainObjectInsert(Dataset: TDataSet;
   AObject: TObject);
 begin
   inherited;
-  FController.Save(TTitle(AObject));
+  FTitleController.Save(TTitle(AObject));
 end;
 
 procedure TfrmParamTitle.dtsMainObjectRemove(Dataset: TDataSet;
   AObject: TObject);
 begin
   inherited;
-  FController.Delete(TTitle(AObject));
+  FTitleController.Delete(TTitle(AObject));
 end;
 
 procedure TfrmParamTitle.dtsMainObjectUpdate(Dataset: TDataSet;
   AObject: TObject);
 begin
   inherited;
-  FController.Save(TTitle(AObject));
+  FTitleController.Save(TTitle(AObject));
 end;
 
 procedure TfrmParamTitle.Flush;
 begin
   inherited;
-  FController.Flush;
+  FTitleController.Flush;
 end;
 
 procedure TfrmParamTitle.Load;
 begin
-  FTitles := FController.GetAll;
+  FTitles := FTitleController.GetAll;
 
   dtsMain.SetSourceList(FTitles);
   dtsMain.Active := True;
