@@ -44,6 +44,7 @@ contains
   Core.LotEvent in 'Core.LotEvent.pas',
   Core.BankAccountLine in 'Core.BankAccountLine.pas',
   Core.LineKind in 'Core.LineKind.pas',
-  Core.LineKindLot in 'Core.LineKindLot.pas';
+  Core.LineKindLot in 'Core.LineKindLot.pas',
+  Core.AccountingYear in 'Core.AccountingYear.pas';
 
 end.

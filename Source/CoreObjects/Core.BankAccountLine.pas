@@ -12,7 +12,8 @@ uses
   Aurelius.Criteria.Dictionary,
   Core.Customer,
   Core.Residence,
-  Core.LineKind;
+  Core.LineKind,
+  Core.AccountingYear;
 
 type
   [Entity]
@@ -39,6 +40,10 @@ type
     [JoinColumn('LK_ID', [TColumnProp.Required], 'LK_ID')]
     FLK_ID: Proxy<TLineKind>;
 
+    [Association([TAssociationProp.Lazy, TAssociationProp.Required], [])]
+    [JoinColumn('AY_ID', [TColumnProp.Required], 'AY_ID')]
+    FAY_ID: Proxy<TAccountingYear>;
+
     [Column('BAL_DEBIT', [], 7, 2)]
     FDebit: Nullable<double>;
     [Column('BAL_CREDIT', [], 7, 2)]
@@ -52,6 +57,8 @@ type
     procedure SetRE_ID(const Value: TResidence);
     function GetLK_ID: TLineKind;
     procedure SetLK_ID(const Value: TLineKind);
+    function GetAY_ID: TAccountingYear;
+    procedure SetAY_ID(const Value: TAccountingYear);
   public
     property ID: integer read FID write FID;
     property RE_ID: TResidence read GetRE_ID write SetRE_ID;
@@ -61,12 +68,18 @@ type
     property Debit: Nullable<double> read FDebit write FDebit;
     property CU_ID: TCustomer read GetCU_ID write SetCU_ID;
     property LK_ID: TLineKind read GetLK_ID write SetLK_ID;
+    property AY_ID: TAccountingYear read GetAY_ID write SetAY_ID;
   end;
 
 
 implementation
 
 { TLotEvent }
+
+function TBankAccountLine.GetAY_ID: TAccountingYear;
+begin
+  Result := FAY_ID.Value;
+end;
 
 function TBankAccountLine.GetCU_ID: TCustomer;
 begin
@@ -81,6 +94,11 @@ end;
 function TBankAccountLine.GetRE_ID: TResidence;
 begin
   Result := FRE_ID.Value;
+end;
+
+procedure TBankAccountLine.SetAY_ID(const Value: TAccountingYear);
+begin
+  FAY_ID.Value := Value;
 end;
 
 procedure TBankAccountLine.SetCU_ID(const Value: TCustomer);

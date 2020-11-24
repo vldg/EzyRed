@@ -34,7 +34,8 @@ uses
   Controller.LineKind in 'Controllers\Controller.LineKind.pas',
   UI.VCL.ParamLineKind in 'UI.VCL.ParamLineKind.pas' {frmParamLineKind},
   Controller.LineKindLot in 'Controllers\Controller.LineKindLot.pas',
-  UI.VCL.ParamLineKindLot in 'UI.VCL.ParamLineKindLot.pas' {frmParamLineKindLot};
+  UI.VCL.ParamLineKindLot in 'UI.VCL.ParamLineKindLot.pas' {frmParamLineKindLot},
+  Controller.AccountingYear in 'Controllers\Controller.AccountingYear.pas';
 
 {$R *.res}
 

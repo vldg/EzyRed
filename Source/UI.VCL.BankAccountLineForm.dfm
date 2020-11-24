@@ -1,11 +1,11 @@
 inherited frmBankAccountLineForm: TfrmBankAccountLineForm
   Caption = 'Ligne de compte'
-  ClientWidth = 757
-  ExplicitWidth = 773
+  ClientWidth = 844
+  ExplicitWidth = 860
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMain: TPanel
-    Width = 757
+    Width = 844
     ExplicitWidth = 757
     object lblLabel: TLabel
       Left = 8
@@ -98,7 +98,7 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
     end
     object dblcbCustomers: TDBLookupComboBox
       Left = 511
-      Top = 40
+      Top = 41
       Width = 145
       Height = 21
       DataField = 'CU_NAME'
@@ -118,13 +118,24 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       ListSource = dsLineKind
       TabOrder = 5
     end
+    object dblcbAccountingYear: TDBLookupComboBox
+      Left = 663
+      Top = 41
+      Width = 145
+      Height = 21
+      DataField = 'AY_NAME'
+      DataSource = dsMain
+      ListField = 'Name'
+      ListSource = dsAccountingYear
+      TabOrder = 6
+    end
   end
   inherited dpTop: TAdvDockPanel
-    Width = 757
+    Width = 844
     ExplicitWidth = 757
   end
   inherited dbgMain: TDBGrid
-    Width = 757
+    Width = 844
   end
   inherited dtsMain: TAureliusDataset
     FieldDefs = <
@@ -168,6 +179,11 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       end
       item
         Name = 'LK_ID'
+        Attributes = [faRequired]
+        DataType = ftVariant
+      end
+      item
+        Name = 'AY_ID'
         Attributes = [faRequired]
         DataType = ftVariant
       end>
@@ -236,6 +252,19 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       LookupResultField = 'Name'
       KeyFields = 'LK_ID'
       Size = 30
+      Lookup = True
+    end
+    object dtsMainAY_ID: TAureliusEntityField
+      FieldName = 'AY_ID'
+      Visible = False
+    end
+    object dtsMainAY_NAME: TStringField
+      FieldKind = fkLookup
+      FieldName = 'AY_NAME'
+      LookupDataSet = dtsAccountingYear
+      LookupKeyFields = 'Self'
+      LookupResultField = 'Name'
+      KeyFields = 'AY_ID'
       Lookup = True
     end
   end
@@ -375,5 +404,58 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
     DataSet = dtsLineKind
     Left = 264
     Top = 200
+  end
+  object dtsAccountingYear: TAureliusDataset
+    FieldDefs = <
+      item
+        Name = 'Self'
+        Attributes = [faReadonly]
+        DataType = ftVariant
+      end
+      item
+        Name = 'ID'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'Name'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'Date'
+        DataType = ftDateTime
+      end
+      item
+        Name = 'RE_ID'
+        Attributes = [faRequired]
+        DataType = ftVariant
+      end>
+    Left = 384
+    Top = 80
+    DesignClass = 'Core.AccountingYear.TAccountingYear'
+    object dtsAccountingYearSelf: TAureliusEntityField
+      FieldName = 'Self'
+      ReadOnly = True
+    end
+    object dtsAccountingYearID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+    end
+    object dtsAccountingYearName: TStringField
+      FieldName = 'Name'
+    end
+    object dtsAccountingYearDate: TDateTimeField
+      FieldName = 'Date'
+    end
+    object dtsAccountingYearRE_ID: TAureliusEntityField
+      FieldName = 'RE_ID'
+      Required = True
+    end
+  end
+  object dsAccountingYear: TDataSource
+    DataSet = dtsAccountingYear
+    Left = 496
+    Top = 80
   end
 end

@@ -9,6 +9,7 @@ uses
   Aurelius.Bind.Dataset, Vcl.Grids, Vcl.DBGrids, AdvToolBar, Vcl.ExtCtrls,
   System.Generics.Collections, Core.BankAccountLine, Controller.BankAccountLine, Controller.Residence,
   Controller.Customer, Core.Customer, Core.LineKind, Controller.LineKind,
+  Core.AccountingYear, Controller.AccountingYear,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, AdvDateTimePicker,
   AdvDBDateTimePicker;
 
@@ -48,6 +49,16 @@ type
     dtsMainLK_NAME: TStringField;
     dsLineKind: TDataSource;
     dblcbLineKind: TDBLookupComboBox;
+    dtsAccountingYear: TAureliusDataset;
+    dtsAccountingYearSelf: TAureliusEntityField;
+    dtsAccountingYearID: TIntegerField;
+    dtsAccountingYearName: TStringField;
+    dtsAccountingYearDate: TDateTimeField;
+    dtsAccountingYearRE_ID: TAureliusEntityField;
+    dtsMainAY_ID: TAureliusEntityField;
+    dtsMainAY_NAME: TStringField;
+    dblcbAccountingYear: TDBLookupComboBox;
+    dsAccountingYear: TDataSource;
     procedure dtsMainNewRecord(DataSet: TDataSet);
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
@@ -58,10 +69,12 @@ type
     FBankAccountLines: TList<TBankAccountLine>;
     FCustomers: TList<TCustomer>;
     FLineKinds: TList<TLineKind>;
+    FAccountingYears: TList<TAccountingYear>;
     FBankAccountLineController: TBankAccountLineController;
     FCustomerController: TCustomerController;
     FLineKindController: TLineKindController;
     FResidenceController: TResidenceController;
+    FAccountingYearController: TAccountingYearController;
 
     procedure Load;
 
@@ -93,6 +106,7 @@ begin
   FResidenceController := TResidenceController.Create(FManager);
   FCustomerController := TCustomerController.Create(FManager);
   FLineKindController := TLineKindController.Create(FManager);
+  FAccountingYearController := TAccountingYearController.Create(FManager);
   Load;
 end;
 
@@ -103,8 +117,10 @@ begin
   FResidenceController.Free;
   FCustomers.Free;
   FCustomerController.Free;
+  FAccountingYears.Free;
   FLineKinds.Free;
   FLineKindController.Free;
+  FAccountingYearController.Free;
   FManager.Free;
   inherited;
 end;
@@ -145,6 +161,8 @@ end;
 
 procedure TfrmBankAccountLineForm.Load;
 begin
+  FAccountingYears := FAccountingYearController.GetAll;
+  dtsAccountingYear.SetSourceList(FAccountingYears);
   FCustomers := FCustomerController.GetAll;
   dtsCustomers.SetSourceList(FCustomers);
   FLineKinds := FLineKindController.GetAll;
