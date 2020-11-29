@@ -485,9 +485,9 @@ object frmParamForm: TfrmParamForm
       end
     end
     object tbTools: TAdvToolBar
-      Left = 232
+      Left = 229
       Top = 1
-      Width = 95
+      Width = 185
       Height = 27
       AllowFloating = True
       Caption = 'Outils'
@@ -544,6 +544,48 @@ object frmParamForm: TfrmParamForm
         ShowCaption = True
         Version = '6.7.1.4'
       end
+      object tbPreviewReport: TAdvToolBarButton
+        Left = 91
+        Top = 2
+        Width = 46
+        Height = 23
+        Action = actPreviewReport
+        Appearance.CaptionFont.Charset = DEFAULT_CHARSET
+        Appearance.CaptionFont.Color = clWindowText
+        Appearance.CaptionFont.Height = -12
+        Appearance.CaptionFont.Name = 'Segoe UI'
+        Appearance.CaptionFont.Style = []
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Position = daTop
+        ShowCaption = True
+        Version = '6.7.1.4'
+      end
+      object tbDesignReport: TAdvToolBarButton
+        Left = 137
+        Top = 2
+        Width = 44
+        Height = 23
+        Action = actDesignReport
+        Appearance.CaptionFont.Charset = DEFAULT_CHARSET
+        Appearance.CaptionFont.Color = clWindowText
+        Appearance.CaptionFont.Height = -12
+        Appearance.CaptionFont.Name = 'Segoe UI'
+        Appearance.CaptionFont.Style = []
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Position = daTop
+        ShowCaption = True
+        Version = '6.7.1.4'
+      end
     end
   end
   object dbgMain: TDBGrid
@@ -584,6 +626,15 @@ object frmParamForm: TfrmParamForm
     end
     object actEntityPaste: TAction
       Caption = 'Coller'
+    end
+    object actPreviewReport: TAction
+      Caption = 'Aper'#231'u'
+      Visible = False
+      OnExecute = actPreviewReportExecute
+    end
+    object actDesignReport: TAction
+      Caption = 'Design'
+      OnExecute = actDesignReportExecute
     end
   end
 end

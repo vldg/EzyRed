@@ -11,7 +11,7 @@ uses
   Controller.Customer, Core.Customer, Core.LineKind, Controller.LineKind,
   Core.AccountingYear, Controller.AccountingYear,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, AdvDateTimePicker,
-  AdvDBDateTimePicker;
+  AdvDBDateTimePicker, frxClass, frxDBSet;
 
 type
   TfrmBankAccountLineForm = class(TfrmParamForm)
@@ -59,6 +59,7 @@ type
     dtsMainAY_NAME: TStringField;
     dblcbAccountingYear: TDBLookupComboBox;
     dsAccountingYear: TDataSource;
+    frxDBDataset1: TfrxDBDataset;
     procedure dtsMainNewRecord(DataSet: TDataSet);
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
@@ -96,10 +97,11 @@ implementation
 
 { TfrmBankAccountLineForm }
 
-uses DBConnection, Main_dmd;
+uses DBConnection, Main_dmd, Report_dmd;
 
 constructor TfrmBankAccountLineForm.Create(AOwner: TComponent);
 begin
+  FReportName := 'BankAccountLine.fr3';
   inherited;
   FManager := TDBConnection.GetInstance.CreateObjectManager;
   FBankAccountLineController := TBankAccountLineController.Create(FManager);

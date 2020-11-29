@@ -6,7 +6,7 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
   TextHeight = 13
   inherited pnlMain: TPanel
     Width = 844
-    ExplicitWidth = 757
+    ExplicitWidth = 844
     object lblLabel: TLabel
       Left = 8
       Top = 24
@@ -132,7 +132,12 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
   end
   inherited dpTop: TAdvDockPanel
     Width = 844
-    ExplicitWidth = 757
+    ExplicitWidth = 844
+    inherited tbTools: TAdvToolBar
+      inherited tbPreviewReport: TAdvToolBarButton
+        OnClick = nil
+      end
+    end
   end
   inherited dbgMain: TDBGrid
     Width = 844
@@ -266,6 +271,11 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       LookupResultField = 'Name'
       KeyFields = 'AY_ID'
       Lookup = True
+    end
+  end
+  inherited alMain: TActionList
+    inherited actPreviewReport: TAction
+      Visible = True
     end
   end
   object dsCustomers: TDataSource
@@ -457,5 +467,12 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
     DataSet = dtsAccountingYear
     Left = 496
     Top = 80
+  end
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 392
+    Top = 168
   end
 end

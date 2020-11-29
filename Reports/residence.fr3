@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.8.2" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="39025,5374193403" ReportOptions.Description.Text="" ReportOptions.LastChange="44163,5924544792" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBRESIDENCE" DataSetName="RESIDENCE"/>
+    <item DataSet="frxDBRESIDENCE_ADDRESS" DataSetName="RESIDENCE_ADDRESS"/>
+    <item DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="102,04731" Width="718,1107" ColumnWidth="0" ColumnGap="0" DataSet="frxDBRESIDENCE_ADDRESS" DataSetName="RESIDENCE_ADDRESS" RowCount="0">
+      <TfrxMemoView Name="RESIDENCE_ADDRESSREA_ADDRESS" AllowVectorExport="True" Left="0,77953" Top="4,22047" Width="718,1107" Height="18,89765" DataSet="frxDBRESIDENCE_ADDRESS" DataSetName="RESIDENCE_ADDRESS" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" FillType="ftGradient" Fill.StartColor="15653060" Fill.EndColor="16777215" Fill.GradientStyle="gsHorizontal" ParentFont="False" Text="[RESIDENCE_ADDRESS.&#34;REA_ADDRESS&#34;]"/>
+    </TfrxMasterData>
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="18,89765" Width="718,1107">
+      <TfrxMemoView Name="RESIDENCERE_NAME" AllowVectorExport="True" Left="0" Top="0" Width="718,1107" Height="22,67718" DataField="RE_NAME" DataSet="frxDBRESIDENCE" DataSetName="RESIDENCE" Font.Charset="1" Font.Color="-16777208" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[RESIDENCE.&#34;RE_NAME&#34;]"/>
+    </TfrxReportTitle>
+    <TfrxDetailData Name="DetailData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="192,75603" Width="718,1107" ColumnWidth="0" ColumnGap="0" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" RowCount="0">
+      <TfrxMemoView Name="RESIDENCE_LOTRE_NUMBER" AllowVectorExport="True" Left="37,7953" Top="0" Width="56,69295" Height="18,89765" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[RESIDENCE_LOT.&#34;REL_NUMBER&#34;]"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="94,48825" Top="0" Width="241,88992" Height="18,89765" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[RESIDENCE_LOT.&#34;T_SMALLNAME&#34;] [RESIDENCE_LOT.&#34;CU_NAME&#34;] [RESIDENCE_LOT.&#34;CU_FIRSTNAME&#34;]"/>
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="529,1342" Top="0" Width="94,48825" Height="18,89765" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text=""/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="623,62245" Top="0" Width="94,48825" Height="18,89765" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text=""/>
+      <TfrxMemoView Name="RESIDENCE_LOTLE_ID" AllowVectorExport="True" Left="529,1342" Top="0" Width="79,37013" Height="18,89765" Visible="False" DataField="LE_ID" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[RESIDENCE_LOT.&#34;LE_ID&#34;]"/>
+      <TfrxMemoView Name="RESIDENCE_LOTCU_EMAIL" AllowVectorExport="True" Left="336,37817" Top="0" Width="192,75603" Height="18,89765" DataField="CU_EMAIL" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[RESIDENCE_LOT.&#34;CU_EMAIL&#34;]"/>
+      <TfrxMemoView Name="RESIDENCE_LOTREL_TANTIEME" AllowVectorExport="True" Left="623,62245" Top="0" Width="79,37013" Height="18,89765" Visible="False" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[RESIDENCE_LOT.&#34;REL_TANTIEME&#34;]"/>
+      <TfrxMemoView Name="RESIDENCE_LOTLE_ID1" AllowVectorExport="True" Left="3,77953" Top="0" Width="79,37013" Height="18,89765" Visible="False" DataField="LE_ID" DataSet="frxDBRESIDENCE_LOT" DataSetName="RESIDENCE_LOT" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[RESIDENCE_LOT.&#34;LE_ID&#34;]"/>
+    </TfrxDetailData>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="147,40167" Width="718,1107">
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="37,7953" Top="0" Width="56,69295" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="8" Fill.BackColor="15000804" ParentFont="False" Text="Lot"/>
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="94,48825" Top="0" Width="241,88992" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="8" Fill.BackColor="15000804" ParentFont="False" Text="Propriétaire"/>
+      <TfrxMemoView Name="Memo3" AllowVectorExport="True" Left="529,1342" Top="0" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="8" Fill.BackColor="15000804" ParentFont="False" Text="EF"/>
+      <TfrxMemoView Name="Memo4" AllowVectorExport="True" Left="623,62245" Top="0" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="8" Fill.BackColor="15000804" ParentFont="False" Text="EC"/>
+      <TfrxMemoView Name="Memo8" AllowVectorExport="True" Left="336,37817" Top="0" Width="192,75603" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="8" Fill.BackColor="15000804" ParentFont="False" Text="Email"/>
+    </TfrxHeader>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="272,12616" Width="718,1107">
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="0" Top="0" Width="94,48825" Height="18,89765" DisplayFormat.FormatStr="dd mmm yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[Date]"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="623,62245" Top="0" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[Page#]/[TotalPages#]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+</TfrxReport>

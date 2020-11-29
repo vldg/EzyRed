@@ -33,17 +33,24 @@ type
     tbEntityPaste: TAdvToolBarButton;
     actEntityCopy: TAction;
     actEntityPaste: TAction;
+    actPreviewReport: TAction;
+    tbPreviewReport: TAdvToolBarButton;
+    actDesignReport: TAction;
+    tbDesignReport: TAdvToolBarButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectRemove(Dataset: TDataSet; AObject: TObject);
     procedure dbgMainDblClick(Sender: TObject);
+    procedure actPreviewReportExecute(Sender: TObject);
+    procedure actDesignReportExecute(Sender: TObject);
   private
     procedure SetSelectedID(const Value: Integer);
     { Déclarations privées }
   protected
     FSelectedID: Integer;
     FDataModified: Boolean;
+    FReportName: string;
     procedure Flush; virtual;
     procedure SelectAndClose; virtual;
   public
@@ -59,7 +66,19 @@ implementation
 
 {$R *.dfm}
 
-uses System.UITypes;
+uses System.UITypes, Report_dmd;
+
+procedure TfrmParamForm.actDesignReportExecute(Sender: TObject);
+begin
+  inherited;
+  TdmdReport.Design(FReportName);
+end;
+
+procedure TfrmParamForm.actPreviewReportExecute(Sender: TObject);
+begin
+  inherited;
+  TdmdReport.Preview(FReportName);
+end;
 
 constructor TfrmParamForm.Create(AOwner: TComponent);
 begin

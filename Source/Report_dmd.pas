@@ -55,6 +55,8 @@ type
     frxDBDataset1: TfrxDBDataset;
     FDQuery1: TFDQuery;
     dsRESIDENCE: TDataSource;
+    qryBANK_ACCOUNT_LINE: TFDQuery;
+    frxDBBANK_ACCOUNT_LINE: TfrxDBDataset;
     procedure frxReport1GetValue(const VarName: string; var Value: Variant);
     procedure qryRESIDENCEBeforeOpen(DataSet: TDataSet);
   private

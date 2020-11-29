@@ -1,7 +1,7 @@
 object dmdReport: TdmdReport
   OldCreateOrder = False
-  Height = 469
-  Width = 666
+  Height = 517
+  Width = 881
   object frxBMPExport1: TfrxBMPExport
     UseFileCache = True
     ShowProgress = True
@@ -477,5 +477,52 @@ object dmdReport: TdmdReport
     DataSet = qryRESIDENCE
     Left = 376
     Top = 272
+  end
+  object qryBANK_ACCOUNT_LINE: TFDQuery
+    MasterSource = dsRESIDENCE
+    Connection = dmdMain.dbMain
+    SQL.Strings = (
+      
+        'SELECT BAL.*, AY.AY_NAME, LK.LK_CODE, T.t_smallname||'#39' '#39'||CU.CU_' +
+        'NAME||'#39' '#39'||CU.cu_firstname as CUST'
+      'FROM BANK_ACCOUNT_LINE BAL'
+      'LEFT OUTER JOIN CUSTOMER CU ON (BAL.CU_ID = CU.CU_ID)'
+      'LEFT OUTER JOIN TITLE T ON (CU.t_id = T.T_ID)'
+      'LEFT OUTER JOIN LINE_KIND LK ON (BAL.LK_ID = LK.LK_ID)'
+      'LEFT OUTER JOIN ACCOUNTING_YEAR AY ON (BAL.AY_ID = AY.AY_ID)'
+      'WHERE BAL.RE_ID = :RE_ID'
+      'ORDER BY BAL.BAL_DATE'
+      ''
+      '')
+    Left = 80
+    Top = 448
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object frxDBBANK_ACCOUNT_LINE: TfrxDBDataset
+    UserName = 'BANK_ACCOUNT_LINE'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'BAL_ID=BAL_ID'
+      'RE_ID=RE_ID'
+      'BAL_LABEL=BAL_LABEL'
+      'BAL_CREDIT=BAL_CREDIT'
+      'BAL_DEBIT=BAL_DEBIT'
+      'BAL_DATE=BAL_DATE'
+      'CU_ID=CU_ID'
+      'LK_ID=LK_ID'
+      'AY_ID=AY_ID'
+      'AY_NAME=AY_NAME'
+      'LK_CODE=LK_CODE'
+      'CUST=CUST')
+    DataSet = qryBANK_ACCOUNT_LINE
+    BCDToCurrency = False
+    Left = 224
+    Top = 448
   end
 end
