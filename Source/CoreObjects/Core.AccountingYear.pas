@@ -14,7 +14,7 @@ uses
 
 type
   [Entity]
-//  [Description('Title definition for customer')]
+  [Description('Accouting year')]
   [Table('ACCOUNTING_YEAR')]
   [Sequence('GEN_ACCOUNTING_YEAR_ID')]
   [Id('FID', TIdGenerator.IdentityOrSequence)]
@@ -29,6 +29,9 @@ type
     [Column('AY_DATE', [])]
     FDate: TDateTime;
 
+    [Column('AY_COV_DATE', [])]
+    FConsoDate: Nullable<TDateTime>;
+
     [Association([TAssociationProp.Lazy, TAssociationProp.Required], [])]
     [JoinColumn('RE_ID', [TColumnProp.Required], 'RE_ID')]
     FRE_ID: Proxy<TResidence>;
@@ -39,6 +42,7 @@ type
     property ID: integer read FID write FID;
     property Name: Nullable<string> read FName write FName;
     property Date: TDateTime read FDate write FDate;
+    property ConsoDate: Nullable<TDateTime> read FConsoDate write FConsoDate;
     property RE_ID: TResidence read GetRE_ID write SetRE_ID;
   end;
 

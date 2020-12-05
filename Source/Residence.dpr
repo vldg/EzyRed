@@ -35,7 +35,8 @@ uses
   UI.VCL.ParamLineKind in 'UI.VCL.ParamLineKind.pas' {frmParamLineKind},
   Controller.LineKindLot in 'Controllers\Controller.LineKindLot.pas',
   UI.VCL.ParamLineKindLot in 'UI.VCL.ParamLineKindLot.pas' {frmParamLineKindLot},
-  Controller.AccountingYear in 'Controllers\Controller.AccountingYear.pas';
+  Controller.AccountingYear in 'Controllers\Controller.AccountingYear.pas',
+  UI.VCL.ParamAccountingYear in 'UI.VCL.ParamAccountingYear.pas' {frmParamAccoutingYear};
 
 {$R *.res}
 

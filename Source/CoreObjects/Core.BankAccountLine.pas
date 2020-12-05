@@ -50,6 +50,8 @@ type
     FCredit: Nullable<double>;
     [Column('BAL_LABEL', [], 32)]
     FLabel: Nullable<string>;
+    [Column('BAL_YEAR', [TColumnProp.Required])]
+    FYearLine: Integer;
 
     function GetCU_ID: TCustomer;
     function GetRE_ID: TResidence;
@@ -66,6 +68,7 @@ type
     property Label_: Nullable<string> read FLabel write FLabel;
     property Credit: Nullable<double> read FCredit write FCredit;
     property Debit: Nullable<double> read FDebit write FDebit;
+    property YearLine: Integer read FYearLine write FYearLine;
     property CU_ID: TCustomer read GetCU_ID write SetCU_ID;
     property LK_ID: TLineKind read GetLK_ID write SetLK_ID;
     property AY_ID: TAccountingYear read GetAY_ID write SetAY_ID;

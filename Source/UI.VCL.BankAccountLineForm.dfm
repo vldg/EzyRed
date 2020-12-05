@@ -129,15 +129,22 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       ListSource = dsAccountingYear
       TabOrder = 6
     end
+    object dbchxYearLine: TDBCheckBox
+      Left = 336
+      Top = 80
+      Width = 97
+      Height = 17
+      Caption = 'Annualis'#233
+      DataField = 'YearLine'
+      DataSource = dsMain
+      TabOrder = 7
+      ValueChecked = '1'
+      ValueUnchecked = '0'
+    end
   end
   inherited dpTop: TAdvDockPanel
     Width = 844
     ExplicitWidth = 844
-    inherited tbTools: TAdvToolBar
-      inherited tbPreviewReport: TAdvToolBarButton
-        OnClick = nil
-      end
-    end
   end
   inherited dbgMain: TDBGrid
     Width = 844
@@ -176,6 +183,11 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       item
         Name = 'Debit'
         DataType = ftFloat
+      end
+      item
+        Name = 'YearLine'
+        Attributes = [faRequired]
+        DataType = ftInteger
       end
       item
         Name = 'CU_ID'
@@ -271,6 +283,10 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       LookupResultField = 'Name'
       KeyFields = 'AY_ID'
       Lookup = True
+    end
+    object dtsMainYearLine: TIntegerField
+      FieldName = 'YearLine'
+      Required = True
     end
   end
   inherited alMain: TActionList
@@ -437,6 +453,10 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
         DataType = ftDateTime
       end
       item
+        Name = 'ConsoDate'
+        DataType = ftDateTime
+      end
+      item
         Name = 'RE_ID'
         Attributes = [faRequired]
         DataType = ftVariant
@@ -462,17 +482,13 @@ inherited frmBankAccountLineForm: TfrmBankAccountLineForm
       FieldName = 'RE_ID'
       Required = True
     end
+    object dtsAccountingYearConsoDate: TDateTimeField
+      FieldName = 'ConsoDate'
+    end
   end
   object dsAccountingYear: TDataSource
     DataSet = dtsAccountingYear
     Left = 496
     Top = 80
-  end
-  object frxDBDataset1: TfrxDBDataset
-    UserName = 'frxDBDataset1'
-    CloseDataSource = False
-    BCDToCurrency = False
-    Left = 392
-    Top = 168
   end
 end

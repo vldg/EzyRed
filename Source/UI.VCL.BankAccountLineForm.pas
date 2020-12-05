@@ -59,7 +59,9 @@ type
     dtsMainAY_NAME: TStringField;
     dblcbAccountingYear: TDBLookupComboBox;
     dsAccountingYear: TDataSource;
-    frxDBDataset1: TfrxDBDataset;
+    dtsMainYearLine: TIntegerField;
+    dbchxYearLine: TDBCheckBox;
+    dtsAccountingYearConsoDate: TDateTimeField;
     procedure dtsMainNewRecord(DataSet: TDataSet);
     procedure dtsMainObjectInsert(Dataset: TDataSet; AObject: TObject);
     procedure dtsMainObjectUpdate(Dataset: TDataSet; AObject: TObject);

@@ -1,6 +1,6 @@
 object dmdReport: TdmdReport
   OldCreateOrder = False
-  Height = 517
+  Height = 589
   Width = 881
   object frxBMPExport1: TfrxBMPExport
     UseFileCache = True
@@ -321,6 +321,7 @@ object dmdReport: TdmdReport
     ParamData = <
       item
         Name = 'RE_ID'
+        DataType = ftInteger
         ParamType = ptInput
       end>
   end
@@ -415,20 +416,28 @@ object dmdReport: TdmdReport
     Top = 336
   end
   object qrySP_REPORT_CONSOMATION: TFDQuery
+    MasterSource = dsRESIDENCE
     Connection = dmdMain.dbMain
     SQL.Strings = (
-      'SELECT * FROM SP_REPORT_CONSOMATION')
+      'SELECT * FROM SP_REPORT_CONSOMATION(:RE_ID)')
     Left = 80
     Top = 384
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
   end
   object frxDBSP_REPORT_CONSOMATION: TfrxDBDataset
     UserName = 'CONSOMATION'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'RE_NAME=Residence'
-      'REA_ADDRESS=Entr'#233'e'
-      'REL_NUMBER=Lot'
-      'COV_DATE=Date'
+      'RE_NAME=RE_NAME'
+      'REA_ADDRESS=REA_ADDRESS'
+      'REL_NUMBER=REL_NUMBER'
+      'COV_DATE=COV_DATE'
       'EF_R=EF_R'
       'EC_R=EC_R'
       'EF_C=EF_C'
@@ -524,5 +533,37 @@ object dmdReport: TdmdReport
     BCDToCurrency = False
     Left = 224
     Top = 448
+  end
+  object qryLINE_KIND: TFDQuery
+    MasterSource = dsRESIDENCE
+    Connection = dmdMain.dbMain
+    SQL.Strings = (
+      'SELECT * FROM LINE_KIND'
+      'WHERE RE_ID =:RE_ID'
+      ''
+      '')
+    Left = 80
+    Top = 504
+    ParamData = <
+      item
+        Name = 'RE_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object frxDBLINE_KIND: TfrxDBDataset
+    UserName = 'LINE_KIND'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'LK_ID=LK_ID'
+      'LK_NAME=LK_NAME'
+      'LK_CODE=LK_CODE'
+      'RE_ID=RE_ID'
+      'LK_TYPE=LK_TYPE'
+      'REA_ID=REA_ID')
+    DataSet = qryLINE_KIND
+    BCDToCurrency = False
+    Left = 224
+    Top = 504
   end
 end

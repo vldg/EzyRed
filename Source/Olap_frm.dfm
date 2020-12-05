@@ -143,6 +143,7 @@ object frmOlap: TfrmOlap
         StatusZone.IntegerFormat.FormatStr = '#0.##'
         StatusZone.IntegerFormat.Kind = fkNumeric
         FieldsZone.Visible = True
+        ExplicitTop = 28
       end
       object Button1: TButton
         Left = 408

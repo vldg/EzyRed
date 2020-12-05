@@ -230,6 +230,11 @@ object frmMain: TfrmMain
       Caption = 'Param'#233'trage des cl'#233's de r'#233'partition'
       OnExecute = actParamLineKindExecute
     end
+    object actParamAccountingYear: TAction
+      Category = 'Param'
+      Caption = 'Param'#233'trage des ann'#233'es comptables'
+      OnExecute = actParamAccountingYearExecute
+    end
   end
   object mmMain: TAdvMainMenu
     Version = '2.7.1.1'
@@ -266,6 +271,9 @@ object frmMain: TfrmMain
       end
       object miParamLineKind: TMenuItem
         Action = actParamLineKind
+      end
+      object miParamAccoutingYear: TMenuItem
+        Action = actParamAccountingYear
       end
     end
     object miPrint: TMenuItem

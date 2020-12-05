@@ -47,6 +47,8 @@ type
     miBankAccountLine: TMenuItem;
     actParamLineKind: TAction;
     miParamLineKind: TMenuItem;
+    actParamAccountingYear: TAction;
+    miParamAccoutingYear: TMenuItem;
     procedure actConsomationExecute(Sender: TObject);
     procedure actDesignReportExecute(Sender: TObject);
     procedure actParamTitleExecute(Sender: TObject);
@@ -61,6 +63,7 @@ type
     procedure actPrintRentKitExecute(Sender: TObject);
     procedure actBankAccountLineExecute(Sender: TObject);
     procedure actParamLineKindExecute(Sender: TObject);
+    procedure actParamAccountingYearExecute(Sender: TObject);
   private
     { Déclarations privées }
     procedure Load;
@@ -86,7 +89,8 @@ uses Report_dmd, Main_dmd,
      UI.VCL.ParamResidenceLotForm,
      UI.VCL.ParamCountry,
      UI.VCL.BankAccountLineForm,
-     UI.VCL.ParamLineKind;
+     UI.VCL.ParamLineKind,
+     UI.VCL.ParamAccountingYear;
 
 procedure TfrmMain.actBankAccountLineExecute(Sender: TObject);
 begin
@@ -116,6 +120,16 @@ end;
 procedure TfrmMain.actFileExitHint(var HintStr: string; var CanShow: Boolean);
 begin
   Close;
+end;
+
+procedure TfrmMain.actParamAccountingYearExecute(Sender: TObject);
+begin
+  frmParamAccoutingYear := TfrmParamAccoutingYear.Create(Self);
+  try
+    frmParamAccoutingYear.ShowModal;
+  finally
+    frmParamAccoutingYear.Release;
+  end;
 end;
 
 procedure TfrmMain.actParamCountryExecute(Sender: TObject);
