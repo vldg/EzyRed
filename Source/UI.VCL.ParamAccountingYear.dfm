@@ -6,6 +6,7 @@ inherited frmParamAccoutingYear: TfrmParamAccoutingYear
   TextHeight = 13
   inherited pnlMain: TPanel
     Width = 480
+    ExplicitWidth = 480
     object lblName: TLabel
       Left = 8
       Top = 13
@@ -81,6 +82,7 @@ inherited frmParamAccoutingYear: TfrmParamAccoutingYear
   end
   inherited dpTop: TAdvDockPanel
     Width = 480
+    ExplicitWidth = 480
   end
   inherited dbgMain: TDBGrid
     Width = 480

@@ -5,12 +5,10 @@ object dmdConsomation: TdmdConsomation
   object qryDateList: TFDQuery
     Connection = dmdMain.dbMain
     SQL.Strings = (
-      'SELECT DISTINCT CV.COV_DATE '
-      'FROM CONSOMATION_VALUE CV'
-      'JOIN RESIDENCE_LOT RL ON (CV.REL_ID = RL.REL_ID)'
-      'JOIN RESIDENCE_ADDRESS RA ON (RA.REA_ID = RL.REA_ID)'
-      'WHERE RA.RE_ID =:RE_ID'
-      '')
+      'select ay_cov_date from ACCOUNTING_YEAR'
+      'where ay_cov_date is not null'
+      'and re_id =:re_id'
+      'order by ay_cov_date')
     Left = 88
     Top = 56
     ParamData = <

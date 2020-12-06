@@ -5,6 +5,7 @@ interface
 uses
   Generics.Collections,
   Aurelius.Engine.ObjectManager,
+  Aurelius.Linq,
   Controller.CoreObject,
   Core.LineKind;
 
@@ -17,7 +18,7 @@ type
     procedure Save(ALineKind: TLineKind);
     procedure Load(AId: Variant);
 
-    function GetAll: TList<TLineKind>;
+    function GetAll(const RE_ID: Integer = -1): TList<TLineKind>;
 
     function GetOne(AId: Variant): TLineKind;
     class function Get(AId: Variant): TLineKind;
@@ -48,11 +49,21 @@ begin
   end;
 end;
 
-function TLineKindController.GetAll: TList<TLineKind>;
+function TLineKindController.GetAll(const RE_ID: Integer = -1): TList<TLineKind>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.Find<TLineKind>.List;
+
+  if (RE_ID = -1) then
+  begin
+    Result := FManager.Find<TLineKind>.List;
+  end
+  else
+  begin
+    Result := FManager.Find<TLineKind>
+              .Where(Linq['RE_ID'] = RE_ID)
+              .List;
+  end;
 end;
 
 function TLineKindController.GetOne(AId: Variant): TLineKind;

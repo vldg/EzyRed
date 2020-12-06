@@ -88,6 +88,7 @@ end;
 
 constructor TfrmParamLineKind.Create(AOwner: TComponent);
 begin
+  FReportName := 'LineKind.fr3';
   inherited;
   FManager := TDBConnection.GetInstance.CreateObjectManager;
   FLineKindController := TLineKindController.Create(FManager);
@@ -165,7 +166,7 @@ begin
   FResidenceAddresss := FResidenceAddressController.GetAll;
   dtsResidenceAddress.SetSourceList(FResidenceAddresss);
 
-  FLineKinds := FLineKindController.GetAll;
+  FLineKinds := FLineKindController.GetAll(SelectedResidence.ID);
   dtsMain.SetSourceList(FLineKinds);
   dtsMain.Active := True;
 end;

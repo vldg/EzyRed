@@ -292,7 +292,7 @@ begin
   try
     while not qry.Eof do
     begin
-      cbxDateR.Items.Add(FormatDateTime('yyyy-mm-dd', qry.FieldByName('COV_DATE').AsDateTime));
+      cbxDateR.Items.Add(FormatDateTime('yyyy-mm-dd', qry.FieldByName('AY_COV_DATE').AsDateTime));
       qry.Next;
     end;
   finally

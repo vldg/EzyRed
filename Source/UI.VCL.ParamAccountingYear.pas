@@ -40,7 +40,6 @@ type
 
     procedure Load;
 
-//    procedure DisplayLine(const AType: Integer);
   protected
     procedure Flush; override;
   public
@@ -66,7 +65,6 @@ begin
   FManager := TDBConnection.GetInstance.CreateObjectManager;
   FAccountingYearController := TAccountingYearController.Create(FManager);
   FResidenceController := TResidenceController.Create(FManager);
-//  FResidenceAddressController := TResidenceAddressController.Create(FManager);
   Load;
 end;
 
@@ -114,10 +112,7 @@ end;
 
 procedure TfrmParamAccoutingYear.Load;
 begin
-//  FResidenceAddresss := FResidenceAddressController.GetAll;
-//  dtsResidenceAddress.SetSourceList(FResidenceAddresss);
-
-  FAccountingYears := FAccountingYearController.GetAll;
+  FAccountingYears := FAccountingYearController.GetAll(SelectedResidence.ID);
   dtsMain.SetSourceList(FAccountingYears);
   dtsMain.Active := True;
 end;

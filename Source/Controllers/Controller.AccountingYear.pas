@@ -5,6 +5,7 @@ interface
 uses
   Generics.Collections,
   Aurelius.Engine.ObjectManager,
+  Aurelius.Linq,
   Controller.CoreObject,
   Core.AccountingYear;
 
@@ -17,7 +18,7 @@ type
     procedure Save(AAccountingYear: TAccountingYear);
     procedure Load(AId: Variant);
 
-    function GetAll: TList<TAccountingYear>;
+    function GetAll(const RE_ID: Integer = -1): TList<TAccountingYear>;
   end;
 
 
@@ -32,11 +33,23 @@ begin
   FManager.Remove(AAccountingYear);
 end;
 
-function TAccountingYearController.GetAll: TList<TAccountingYear>;
+function TAccountingYearController.GetAll(const RE_ID: Integer = -1): TList<TAccountingYear>;
 begin
   if FOwnManager then
     FManager.Clear;
-  Result := FManager.Find<TAccountingYear>.List;
+
+  if (RE_ID = -1) then
+  begin
+    Result := FManager.Find<TAccountingYear>.List;
+  end
+  else
+  begin
+    Result := FManager.Find<TAccountingYear>
+              .Where(Linq['RE_ID'] = RE_ID)
+              .OrderBy('Date')
+              .List;
+  end;
+
 end;
 
 procedure TAccountingYearController.Load(AId: Variant);
